@@ -1,0 +1,105 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="ScheduleBsuir.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SubjectItemDataTemplate" >
+                <Grid VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="107" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding sStartTime}" Margin="7,20,13,0" FontSize="30" FontFamily="Segoe UI" FontStretch="UltraExpanded" FontWeight="Normal" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding sEndTime}" Margin="7, -5,13,0" FontSize="30" FontFamily="Segoe UI" FontStretch="UltraExpanded" FontWeight="Normal"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding subject}" Margin="0,25,0,0" FontSize="30" FontFamily="Courier" FontStretch="UltraExpanded" FontWeight="ExtraBlack"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding employee}" Margin="0,0,0,0" FontFamily="Segoe UI" FontSize="22" FontStyle="Italic" FontStretch="UltraExpanded"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding auditory}" Margin="10,28,0,0" FontSize="30" FontFamily="Courier" FontStretch="UltraExpanded" FontWeight="ExtraBlack"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot" >
+        <phone:Pivot x:Name="myPivot">
+            <!--Pivot item one-->
+            <phone:PivotItem x:Name="firstPivot">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="10,0,20,20" Text="{Binding InfoAboutDay}"  FontSize="30" FontFamily="Arial" TextAlignment="Left" FontStretch="UltraExpanded" FontStyle="Italic"/>
+                    <ListBox x:Name="firstListBox" Grid.Row="1" ItemTemplate="{StaticResource SubjectItemDataTemplate}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+            
+            <phone:PivotItem x:Name="secondPivot">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="10,0,20,20" Text="{Binding InfoAboutDay}"  FontSize="30" FontFamily="Arial" TextAlignment="Left" FontStretch="UltraExpanded" FontStyle="Italic"/>
+                    <ListBox x:Name="secondListBox" Grid.Row="1"  ItemTemplate="{StaticResource SubjectItemDataTemplate}" >
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+            
+            <phone:PivotItem x:Name="thirdPivot">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="10,0,20,20" Text="{Binding InfoAboutDay}"  FontSize="30" FontFamily="Arial" TextAlignment="Left" FontStretch="UltraExpanded" FontStyle="Italic"/>
+                    <ListBox x:Name="thirdListBox" Grid.Row="1"  ItemTemplate="{StaticResource SubjectItemDataTemplate}" >
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar >
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False" Mode="Minimized">
+            <shell:ApplicationBarIconButton IconUri="/Resources/Icons/appbar.favs.rest.png"  Click="setDate_Today" Text="Сегодня"/>
+            <shell:ApplicationBarIconButton IconUri="/Resources/Icons/appbar.favs.rest.png" Click="ShowWeekSchedule" Text="На неделю" />
+            <shell:ApplicationBarIconButton IconUri="/Resources/Icons/appbar.feature.settings.rest.png"  Click="Show_Settings" Text="Настройки"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,10 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="ScheduleBsuir" EntryPointType="ScheduleBsuir.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="ScheduleBsuir" Source="ScheduleBsuir.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart Source="be-BY/ScheduleBsuir.resources.dll" />
+    <AssemblyPart Source="be/ScheduleBsuir.resources.dll" />
+    <AssemblyPart Source="ru-RU/ScheduleBsuir.resources.dll" />
+    <AssemblyPart Source="ru/ScheduleBsuir.resources.dll" />
+  </Deployment.Parts>
+</Deployment>
